@@ -138,17 +138,7 @@ int main(){
         textfin=textfin + nombre + '\n';
     }
     cout<<textfin;
-
-
-/*
-    for(i=0;i<n_reg;i++){
-        cout <<endl<<endl<< registros[i].rol <<endl;
-        cout << registros[i].dia <<" "<<registros[i].mes<<" "<<registros[i].anio<<endl<<endl;
-        cout <<"precision: "<< registros[i].precision <<endl;
-        cout <<"ppm: "<< registros[i].ppm <<endl;
-
-    }
-*/
+    
     delete[] registros;
     delete[] estudiantes;
     return 0;

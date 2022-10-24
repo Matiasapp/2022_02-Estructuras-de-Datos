@@ -17,7 +17,19 @@ struct Registro {
     int ppm;
     float precision;
 };
-
+/*****
+* estudiante* read_estu
+******
+* Esta función lee el archivo de "estudiantes.txt" y crea un string con todos los estudiantes, luego crea un array de tipo estudiante* y lo va llenando mientras va recorriendo
+el string, para finalmente retornar el array creado de estudiante*.
+******
+* Input:
+* int& n_estu : este entero es pasado por referencia para que guarde el valor de el número de estudiantes que tiene el archivo de "estudiantes.txt".
+* .......
+******
+* Returns:
+* estudiante*, el retorno es el array que tiene los datos de los distintos estudiantes.
+*****/
 estudiante* read_estu(int& n_estu){
     ifstream fe;
     long unsigned int i;
@@ -65,7 +77,18 @@ estudiante* read_estu(int& n_estu){
     fe.close();
     return e;
 }
-
+/*****
+* Registro* read_reg
+******
+* Esta función lee el archivo binario de los registros y los guarda en un array.
+******
+* Input:
+* int& n_reg este entero es pasado por referencia para que guarde el valor de el número de registros que tiene el archivo binario.
+* .......
+******
+* Returns:
+* Registro* , el retorno es el array que tiene los registros con la información de velocidad y precisión de cada estudiante en un día, mes y año determinados.
+*****/
 Registro* read_reg(int &n_reg){
     ifstream freg;
     freg.open("registros.dat",ios::binary);
@@ -75,7 +98,19 @@ Registro* read_reg(int &n_reg){
     freg.close();
     return reg;
 }
-
+/*****
+* string preguntas
+******
+* Esta función recibe una consulta y recorre el array de los registros para ver si algún registro coincide con la consulta recibida.
+******
+* Input:
+* int& n_reg : parámetro pasado para saber el numero de registros que hay y de esta forma recorrerlos.
+* Registro* reg : array con los registros de la información de velocidad y precisión de cada estudiante en un día, mes y año determinados.
+* .......
+******
+* Returns:
+* string, el retorno es el rol del estudiante con mejor velocidad o precisión, dependiendo de lo que se pregunte, en la fecha consultada.
+*****/
 string preguntas(int& n_reg,Registro* reg){
     int t,d,m,a;
     string thebest;
@@ -109,6 +144,20 @@ string preguntas(int& n_reg,Registro* reg){
     }
     return thebest;
 }
+/*****
+* String nombrebuscado
+******
+* a partir de el rol de un estudiante recorre el array de estudiantes, en busca de un rol que coincida para retornar el nombre y el apellido
+******
+* Input:
+* string rol_buscado : el rol del estudiante que se quiere saber el nombre y apellido.
+* int n_estu : el numero de estudiantes que existen.
+* estudiante* estudiantes : el array de los estudiantes que existen.
+* .......
+******
+* Returns:
+* string, el retorno es el nombre y apellido del estudiante que coincidió con el rol que se estaba buscando.
+*****/
 string nombrebuscado(string rol_buscado,int n_estu,estudiante* estudiantes){
     int i =0;
     string nombreapellido;
@@ -120,7 +169,19 @@ string nombrebuscado(string rol_buscado,int n_estu,estudiante* estudiantes){
     }
     return "No existe";
 }
-
+/*****
+* int main
+******
+* la función principal de todo programa, llama a las funciones que leen los archivos, para luego hacer un numero determinado de consultas
+* y llamar a las otras funciones para que el programa funcione.
+******
+* Input:
+* -
+* .......
+******
+* Returns:
+* int, retorna 0 ya que es la función principal.
+*****/
 int main(){
     int n_estu,n_reg,n_consultas,i;
     string rol_buscado;
